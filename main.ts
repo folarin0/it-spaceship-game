@@ -28,6 +28,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         `, Spaceship, 0, -100)
     projectile.setKind(SpriteKind.laser)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.asteroid, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
+})
 let projectile2: Sprite = null
 let projectile: Sprite = null
 let Spaceship: Sprite = null
@@ -74,5 +77,5 @@ forever(function () {
         . . . . . . . . . . . . . . . . 
         `, -50, 50)
     projectile2.setKind(SpriteKind.asteroid)
-    pause(2000)
+    pause(Math.max(2000, 500))
 })
